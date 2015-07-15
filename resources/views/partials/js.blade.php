@@ -10,7 +10,6 @@
 
 <!-- Javascripts -->
 <script src={{URL::to("assets/plugins/jquery/jquery-2.1.4.min.js")}}></script>
-<script src={{URL::to("/js/all.js")}}></script>
 <script src={{URL::to("assets/plugins/jquery-ui/jquery-ui.min.js")}}></script>
 <script src={{URL::to("assets/plugins/pace-master/pace.min.js")}}></script>
 <script src={{URL::to("assets/plugins/bootstrap/js/bootstrap.min.js")}}></script>
@@ -19,3 +18,4 @@
 <script src={{URL::to("assets/plugins/uniform/jquery.uniform.min.js")}}></script>
 <script src={{URL::to("assets/plugins/waves/waves.min.js")}}></script>
 <script src={{URL::to("assets/js/modern.min.js")}}></script>
+<script src={{URL::to("/js/all.js")}}></script>

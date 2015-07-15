@@ -12,6 +12,7 @@ class AccountController extends Controller
 {
     public function getIndex(){
 
+        $roles = \App\Role::orderBy('id', 'DESC')->get();
         $root_categories = \App\Category::whereIsRoot()->get();
         $categories = \App\Category::get();
         return view('accounts.index',compact('roles','root_categories','categories'));
@@ -35,7 +36,13 @@ class AccountController extends Controller
     }
 
     public function postOffice(){
+
         $bool = \Request::input('bool');
+        $this->officesync($bool);
+
+    }
+
+    protected function officesync($bool){
         if($bool == 'true'){
             $user_id = \Request::input('user_id');
             $category_id = \Request::input('category_id');
@@ -49,6 +56,60 @@ class AccountController extends Controller
             $user->categoryServices()->detach($category_id);
             return 'false';
         }
+    }
+
+    public function postRegister()
+    {
+
+        $validator = $this->validator(\Request::all());
+
+        if ($validator->fails())
+        {
+            return \Response::json(array(
+                'fail' => true,
+                'errors' => $validator->getMessageBag()->toArray()
+            ));
+        }
+
+
+        $this->create(\Request::all());
+
+        $user = \App\User::get()->last();
+        return \Response::json($user);
+    }
+
+    public function validator(array $data)
+    {
+        return \Validator::make($data, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+        ], [
+            'name.required' => 'Името е задължително.',
+            'name.max' => 'Максимална дължина на името 255 символа.',
+            'email.required' => 'Имейлът е задължителен.',
+            'email.email' => 'Невалиден имейл.',
+            'email.max' => 'Максимална дължина на имейла 255 символа.',
+            'email.unique' => 'Този имейл адрес се повтаря.',
+            'password.required' => 'Паролата е задължителна.',
+            'password.confirmed' => 'Потвърдената парола е грешна.',
+            'password.min' => 'Минимална дължина на паролата 6 символа.',
+        ]);
+    }
+
+    public function create(array $data)
+    {
+        $user = new \App\User;
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->save();
+        if (array_key_exists('categories',$data)) {
+            $user->categoryServices()->attach($data['categories']);
+        }
+        $user->roles()->attach($data['role']);
+
+        return $user;
     }
 
 }

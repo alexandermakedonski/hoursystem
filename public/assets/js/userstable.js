@@ -65,28 +65,37 @@ $(document).ready(function() {
         url: '/accounts/salarychange',
         title: 'Enter salary',
         mode: 'inline',
-        params:{_token: Globals._token}
+        params:{_token: Globals._token},
+        inputclass:'salary-beauty'
     });
 
-    $('.select-account-position').multiselect({
-        enableFiltering: true,
-        enableClickableOptGroups: true,
-        maxHeight: 500,
-        onChange: function (option, checked, select) {
-            user_id = $(option).closest('form').find('input[name="user_id"]').val();
-            $.ajax({
-                type: 'POST',
-                url: '/accounts/office',
-                data: {
-                    '_token': Globals._token,
-                    'user_id': user_id,
-                    'category_id': $(option).val(),
-                    'bool': checked
-                },
-                success: function (data) {
-                }
-            })
-        }
+    var multiselectUser = function(){
+        $('.select-account-position').multiselect({
+            enableFiltering: true,
+            enableClickableOptGroups: true,
+            maxHeight: 500,
+            onChange: function (option, checked, select) {
+                user_id = $(option).closest('form').find('input[name="user_id"]').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/accounts/office',
+                    data: {
+                        '_token': Globals._token,
+                        'user_id': user_id,
+                        'category_id': $(option).val(),
+                        'bool': checked
+                    },
+                    success: function (data) {
+                    }
+                })
+            }
+        });
+    };
+
+    multiselectUser();
+
+    $('.paginate_button').on('click',function(e){
+        multiselectUser();
     });
 
     $('#users-table').show();

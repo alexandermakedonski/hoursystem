@@ -34,9 +34,9 @@
                                 <div class="form-group">
                                     {!! Form::password('password',['class' => 'form-control','placeholder' => 'Парола','required']) !!}
                                 </div>
-                                <div class="checkbox checkbox-primary">
-                                    {!! Form::checkbox(null,null,null,['id' => 'checkbox101','checked']) !!}
-                                    <label for="checkbox101"> Запомни ме</label>
+                                <div>
+                                    {!! Form::checkbox(null,null,null,['checked']) !!}
+                                    <label> Запомни ме</label>
                                 </div>
                                 <button type="submit" class="btn btn-success btn-block">Login</button>
                                 <a href="forgot.html" class="display-block text-center m-t-md text-sm">Забравена Парола?</a>

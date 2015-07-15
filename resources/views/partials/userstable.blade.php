@@ -1,4 +1,6 @@
 @inject('users','\App\User')
+@inject('users','\App\User')
+@inject('users','\App\User')
 
 
 <div class="row">
