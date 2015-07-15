@@ -1,0 +1,1 @@
+{"version":3,"sources":["custom.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA","file":"all.js","sourcesContent":["$(document).ready(function () {\r\n    var $pathArray = window.location.pathname.split( '/' );\r\n    $('.'+$pathArray[1]).addClass('active');\r\n});"],"sourceRoot":"/source/"}
