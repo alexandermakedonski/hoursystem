@@ -41,8 +41,14 @@ $(document).ready(function() {
                     });
 
                 } else {
-                    uploader.start();
+
+
                     $('[data-show-error]').hide().popover('destroy');
+                    if(uploader.files.length > 0){
+                        uploader.start();
+                    }else{
+                        location.reload();
+                    }
               }
             }
         });
@@ -111,7 +117,7 @@ $(document).ready(function() {
     });
 
     uploader.bind('UploadComplete',function(up, files){
-       console.log('finish avatar upload');
+        location.reload();
     });
 
 });
