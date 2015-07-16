@@ -137,6 +137,7 @@
   width: 70px;
   height: 70px;
   border: dashed 2px;
+  border-style: solid dashed 2px;
   border-radius: 50%;
   overflow: hidden; }
 
@@ -146,8 +147,7 @@
 
 .bdate-select button, .bdate-select input, .bdate-select select, .bdate-select textarea {
   height: 30px;
-  border: solid 1px #DCE1E4;
-  margin-left: -3px; }
+  border: solid 1px #DCE1E4; }
 
 select[name="role"], input[name="salary"] {
   max-width: 100px; }

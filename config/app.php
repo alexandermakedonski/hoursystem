@@ -146,6 +146,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
         Torann\Hashids\HashidsServiceProvider::class,
+        JildertMiedema\LaravelPlupload\LaravelPluploadServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -196,6 +198,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Illuminate\Html\FormFacade::class,
         'Html'      => Illuminate\Html\HtmlFacade::class,
+        'Plupload' => JildertMiedema\LaravelPlupload\Facades\Plupload::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

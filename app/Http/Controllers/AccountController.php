@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
@@ -117,6 +116,18 @@ class AccountController extends Controller
         return $user;
     }
 
+    public function postUseravatar(){
+
+
+        return \Plupload::receive('file', function ($file){
+            // Store the uploaded file
+            $email = \Request::input('email');
+            $path = storage_path().'/profiles/'.$email.'/avatar/';
+            \File::makeDirectory($path,  $mode = 0777, $recursive = true);
+            $path = storage_path().'/profiles/'.$email.'/avatar/avatar.jpg';
+            \Image::make($file->getRealPath())->save($path,30);
+        });
+    }
 
 
 }

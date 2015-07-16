@@ -105,7 +105,7 @@ $(document).ready(function() {
                 "sLast": "Последна"
             }
         },
-        "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]],
+        "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "Всички"]],
         "fnDrawCallback":
             function( oSettings ) {
                 multiselectUser();

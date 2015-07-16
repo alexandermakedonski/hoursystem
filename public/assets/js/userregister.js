@@ -41,9 +41,8 @@ $(document).ready(function() {
                     });
 
                 } else {
-                    //uploader.start();
+                    uploader.start();
                     $('[data-show-error]').hide().popover('destroy');
-                    console.log(data);
               }
             }
         });
@@ -58,5 +57,61 @@ $(document).ready(function() {
         monthSuffixes:false
     });
 
+    var uploader = new plupload.Uploader({
+        runtimes: 'html5',
+        browse_button: 'avatar-upload',
+        chunk_size: '50kb',
+        url: '/accounts/useravatar',
+        multi_selection: false,
+        flash_swf_url: '/assets/plugins/plupload-2.1.7/js/Moxie.swf',
+        silverlight_xap_url: '/assets/plugins/plupload-2.1.7/js/Moxie.xap',
+        filters: {
+            mime_types: [
+                {title: "Image files", extensions: "jpg,gif,png,jpeg"}
+            ]
+        }
+    });
+
+    uploader.init();
+
+    uploader.bind('FilesAdded', function (up, files) {
+        $('#avatar-upload').empty();
+        $.each(files, function () {
+
+            var img = new mOxie.Image();
+
+            img.onload = function () {
+                this.embed($('#avatar-upload').get(0), {
+                    width: 100,
+                    height: 100,
+                    crop: true
+                });
+            };
+
+            img.onembedded = function () {
+                this.destroy();
+            };
+
+            img.onerror = function () {
+                this.destroy();
+            };
+
+            img.load(this.getSource());
+
+        });
+        if (uploader.files.length > 1){
+            uploader.splice(0,uploader.files.length-1)
+            uploader.refresh();
+        }
+
+    });
+
+    uploader.bind('BeforeUpload', function (up, file) {
+        up.settings.multipart_params = {"email": $('input[name="email"]').val(), "_token": Globals._token};
+    });
+
+    uploader.bind('UploadComplete',function(up, files){
+       console.log('finish avatar upload');
+    });
 
 });

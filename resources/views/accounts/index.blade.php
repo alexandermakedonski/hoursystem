@@ -39,6 +39,7 @@
     <script src={{ URL::to("assets/js/userregister.js") }}></script>
     <script src={{ URL::to("assets/js/userstable.js") }}></script>
     <script src={{ URL::to("assets/plugins/jquery-date-dropdowns/jquery.date-dropdowns.min.js") }}></script>
+    <script src="{{ URL::to('assets/plugins/plupload-2.1.7/js/plupload.full.min.js') }}"></script>
 
 
 @endsection

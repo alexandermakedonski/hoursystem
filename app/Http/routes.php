@@ -12,6 +12,9 @@
 */
 
 Route::get('/home', 'HomeController@getHome');
+Route::get('/',function(){
+    return redirect('/home');
+});
 
 Route::controllers([
     'account' => 'Auth\AuthController',
