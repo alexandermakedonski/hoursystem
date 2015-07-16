@@ -110,15 +110,13 @@
 /* Registration Form css */
 .registration-form form .group .fa-position {
   position: relative;
-  top: 30px;
-  left: 14px;
+  top: 27px;
+  left: 13px;
   font-size: 18px;
   color: #C3C3C3; }
 
 .registration-form form .group .form-postition {
-  padding-left: 38px;
-  height: 40px;
-  padding: 15px 35px !important; }
+  padding: 0 0 0 35px !important; }
 
 .registration-form form .group .pop-warning {
   font-size: 16px;
@@ -145,6 +143,10 @@
 #avatar-upload canvas {
   width: 70px;
   height: 70px; }
+
+.bdate-select button, .bdate-select input, .bdate-select select, .bdate-select textarea {
+  height: 30px;
+  border: solid 1px #DCE1E4; }
 
 /* Registration Form css end*/
 

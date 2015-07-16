@@ -21,7 +21,7 @@
                 </div>
                 <div class="group">
                     <i class="fa-position fa fa-envelope-o"></i>
-                    {!! Form::text('email',null,['class' => 'form-postition form-control','placeholder' => 'Имейл']) !!}
+                    {!! Form::text('email',null,['class' => 'form-postition form-control','placeholder' => 'Имейл','autocomplete'=>'off']) !!}
                     <i data-show-error="email" class="fa fa-warning pop-warning"></i>
                 </div>
                 <div class="group">
@@ -49,6 +49,9 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="form-group">
+                    <div class="bdate-select"></div>
+                </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -64,7 +67,6 @@
                         </div>
                     </div>
                 </div>
-
                 <button id="start-upload" type="submit" class="btn btn-light btn-pos">Регистрирай</button>
                 {!! Form::close() !!}
             </div>

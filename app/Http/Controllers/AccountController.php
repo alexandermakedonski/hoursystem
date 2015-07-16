@@ -71,11 +71,9 @@ class AccountController extends Controller
             ));
         }
 
-
         $this->create(\Request::all());
 
-        $user = \App\User::get()->last();
-        return \Response::json($user);
+        return 'true';
     }
 
     public function validator(array $data)
