@@ -146,7 +146,11 @@
 
 .bdate-select button, .bdate-select input, .bdate-select select, .bdate-select textarea {
   height: 30px;
-  border: solid 1px #DCE1E4; }
+  border: solid 1px #DCE1E4;
+  margin-left: -3px; }
+
+select[name="role"], input[name="salary"] {
+  max-width: 100px; }
 
 /* Registration Form css end*/
 

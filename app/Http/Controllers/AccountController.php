@@ -73,7 +73,7 @@ class AccountController extends Controller
 
         $this->create(\Request::all());
 
-        return 'true';
+        return \Request::all();
     }
 
     public function validator(array $data)
@@ -82,6 +82,8 @@ class AccountController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'date' => 'required',
+            'salary' => 'required|integer'
         ], [
             'name.required' => 'Името е задължително.',
             'name.max' => 'Максимална дължина на името 255 символа.',
@@ -92,6 +94,9 @@ class AccountController extends Controller
             'password.required' => 'Паролата е задължителна.',
             'password.confirmed' => 'Потвърдената парола е грешна.',
             'password.min' => 'Минимална дължина на паролата 6 символа.',
+            'date.required' => 'Датата е задължителна.',
+            'salary.required' => 'Заплатата е задължителна.',
+            'salary.integer' => 'Трябва да бъде число.'
         ]);
     }
 
@@ -100,6 +105,8 @@ class AccountController extends Controller
         $user = new \App\User;
         $user->name = $data['name'];
         $user->email = $data['email'];
+        $user->salary = $data['salary'];
+        $user->bDate = $data['date'];
         $user->password = bcrypt($data['password']);
         $user->save();
         if (array_key_exists('categories',$data)) {
@@ -109,5 +116,7 @@ class AccountController extends Controller
 
         return $user;
     }
+
+
 
 }

@@ -36,9 +36,9 @@
     <script src={{ URL::to("assets/plugins/datatables/js/jquery.datatables.min.js") }}></script>
     <script src={{ URL::to("assets/plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js") }}></script>
     <script src={{ URL::to("assets/plugins/bootstrap-multiselect/js/bootstrap-multiselect.js") }}></script>
-    <script src={{ URL::to("assets/plugins/jquery-birthday-picker/jquery-birthday-picker.min.js") }}></script>
-    <script src={{ URL::to("assets/js/userstable.js") }}></script>
     <script src={{ URL::to("assets/js/userregister.js") }}></script>
+    <script src={{ URL::to("assets/js/userstable.js") }}></script>
+    <script src={{ URL::to("assets/plugins/jquery-date-dropdowns/jquery.date-dropdowns.min.js") }}></script>
 
 
 @endsection

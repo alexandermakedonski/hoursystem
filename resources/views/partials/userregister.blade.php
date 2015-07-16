@@ -35,8 +35,19 @@
                     {!! Form::password('password_confirmation',['class' => 'form-postition form-control','placeholder' =>
                     'Потвърди парола']) !!}
                 </div>
+
+                <div class="group">
+                    <i class="fa-position glyphicon glyphicon-euro"></i>
+                    {!! Form::text('salary',null,['class' => 'form-postition form-control','placeholder' => 'Заплата','autocomplete'=>'off']) !!}
+                    <i data-show-error="salary" class="fa fa-warning pop-warning"></i>
+                </div>
                 <br>
-                <div class="form-group">
+                <div class="group">
+                    <div class="bdate-select"></div>
+                    <i data-show-error="date" class="fa fa-warning pop-warning"></i>
+                </div>
+                <br>
+                <div class="group">
                     <select name="categories[]" class="user-register" multiple="multiple">
                         @foreach($root_categories as $root)
                             <optgroup label="{{ $root->name }}">
@@ -49,12 +60,10 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group">
-                    <div class="bdate-select"></div>
-                </div>
+                <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="group">
                             <select name="role"  class="form-control" >
                                 @foreach($roles as $role)
                                     @if($role->name == 'Base')
@@ -67,7 +76,8 @@
                         </div>
                     </div>
                 </div>
-                <button id="start-upload" type="submit" class="btn btn-light btn-pos">Регистрирай</button>
+                <br>
+                <button id="start-upload" type="submit" class="btn btn-default btn-sm btn-pos">Регистрирай</button>
                 {!! Form::close() !!}
             </div>
         </div>

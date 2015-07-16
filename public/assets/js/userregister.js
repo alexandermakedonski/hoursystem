@@ -50,11 +50,13 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('.bdate-select').birthdayPicker({
-        maxAge: 100,
-        minAge: 0,
-        placeholder: true,
-        defaultDate: false,
+    $(".bdate-select").dateDropdowns({
+        defaultDateFormat:'dd/mm/yyyy',
+        submitFormat:'dd/mm/yyyy',
+        daySuffixes:false,
+        monthFormat:'numeric',
+        monthSuffixes:false
     });
+
 
 });

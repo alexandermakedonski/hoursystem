@@ -162,4 +162,8 @@
   height: 30px;
   border: solid 1px #DCE1E4;
 }
+
+select[name="role"],input[name="salary"]{
+  max-width: 100px;
+}
 /* Registration Form css end*/
