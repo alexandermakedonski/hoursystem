@@ -47,7 +47,8 @@ $(document).ready(function() {
                     if(uploader.files.length > 0){
                         uploader.start();
                     }else{
-                        location.reload();
+                        ajaxuserstable();
+                        regFinish();
                     }
               }
             }
@@ -117,7 +118,22 @@ $(document).ready(function() {
     });
 
     uploader.bind('UploadComplete',function(up, files){
-        location.reload();
+        ajaxuserstable();
+        regFinish();
     });
+
+    var regFinish = function(){
+        $('#avatar-upload').empty();
+        $('input[name="name"]').val('');
+        $('input[name="email"]').val('');
+        $('input[name="password"]').val('');
+        $('input[name="password_confirmation"]').val('');
+        $('input[name="salary"]').val('');
+        $('.day').val('').change();
+        $('.month').val('').change();
+        $('.year').val('').change();
+        $('.user-register').multiselect('deselectAll', false);
+        $('.user-register').multiselect('updateButtonText');
+    }
 
 });

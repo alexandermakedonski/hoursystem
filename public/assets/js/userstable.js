@@ -1,5 +1,21 @@
 $(document).ready(function() {
 
+    ajaxuserstable = function(){
+        $.ajax({
+            type: 'GET',
+            url: '/accounts/userstable',
+            error:function(er){
+
+            },
+            success: function (data) {
+                $('.users-table-ajax').html(data);
+                table();
+            }
+        });
+    };
+
+    ajaxuserstable();
+
     var multiselectUser = function(){
         $('.select-account-position').multiselect({
             enableFiltering: true,
@@ -33,7 +49,7 @@ $(document).ready(function() {
             mode: 'inline',
             params:{_token: Globals._token}
         });
-    }
+    };
 
     var rolesselect = function(){
         $('.roleselect').editable({
@@ -49,7 +65,7 @@ $(document).ready(function() {
             ],
             params:{_token: Globals._token}
         });
-    }
+    };
 
     var userBdate = function(){
         $('.user-bdate').editable({
@@ -67,7 +83,7 @@ $(document).ready(function() {
             },
             params:{_token: Globals._token}
         });
-    }
+    };
 
     var userSalary = function(){
         $('.user-salaray').editable({
@@ -78,45 +94,40 @@ $(document).ready(function() {
             params:{_token: Globals._token},
             inputclass:'salary-beauty'
         });
-    }
+    };
 
 
-    multiselectUser();
-    userBdate();
-    rolesselect();
-    userSalary();
-    namedit();
+    var table = function(){
+        $('#users-table').DataTable({
+            "language": {
+                "sProcessing":   "Обработка на резултатите...",
+                "sLengthMenu":   "Покажи _MENU_",
+                "sZeroRecords":  "Няма намерени резултати",
+                "sInfo":         "",
+                "sInfoEmpty":    "Показване на резултати от 0 до 0 от общо 0",
+                "sInfoFiltered": "(филтрирани _END_ от общо _MAX_ резултата)",
+                "sInfoPostFix":  "",
+                "sSearch":       "Търсене:",
+                "sUrl":          "",
+                "oPaginate": {
+                    "sFirst": "Първа",
+                    "sPrevious": "Предишна",
+                    "sNext": "Следваща",
+                    "sLast": "Последна"
+                }
+            },
+            "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "Всички"]],
+            "fnDrawCallback":
+                function( oSettings ) {
+                    multiselectUser();
+                    userBdate();
+                    rolesselect();
+                    userSalary();
+                    namedit();
+                }
+        });
+    };
 
-    var table = $('#users-table').DataTable({
-        "language": {
-            "sProcessing":   "Обработка на резултатите...",
-            "sLengthMenu":   "Покажи _MENU_",
-            "sZeroRecords":  "Няма намерени резултати",
-            "sInfo":         "",
-            "sInfoEmpty":    "Показване на резултати от 0 до 0 от общо 0",
-            "sInfoFiltered": "(филтрирани _END_ от общо _MAX_ резултата)",
-            "sInfoPostFix":  "",
-            "sSearch":       "Търсене:",
-            "sUrl":          "",
-            "oPaginate": {
-                "sFirst": "Първа",
-                "sPrevious": "Предишна",
-                "sNext": "Следваща",
-                "sLast": "Последна"
-            }
-        },
-        "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "Всички"]],
-        "fnDrawCallback":
-            function( oSettings ) {
-                multiselectUser();
-                userBdate();
-                rolesselect();
-                userSalary();
-                namedit();
-            }
-    });
-
-    $('#users-table').show();
 });
 
 

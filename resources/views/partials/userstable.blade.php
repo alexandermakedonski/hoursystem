@@ -1,8 +1,3 @@
-@inject('users','\App\User')
-@inject('users','\App\User')
-@inject('users','\App\User')
-
-
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-white">
@@ -11,7 +6,7 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table id="users-table" class="row-border hover" cellspacing="0" width="100%" style="display: none">
+                    <table id="users-table" class="row-border hover" cellspacing="0" width="100%" >
                         <thead>
                         <tr>
                             <th>Име</th>
@@ -33,7 +28,7 @@
                         </tfoot>
 
                         <tbody>
-                        @foreach($users->users() as $user)
+                        @foreach($users as $user)
                             <tr>
                                 <td class="nameEdit" data-pk="{{ $user->id }}" >{{ $user->name }}</td>
                                 <td>
@@ -67,7 +62,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div><!-- Row -->
 

@@ -17,6 +17,14 @@ class AccountController extends Controller
         return view('accounts.index',compact('roles','root_categories','categories'));
     }
 
+    public function getUserstable(){
+        $users = \App\User::all();
+        $roles = \App\Role::orderBy('id', 'DESC')->get();
+        $root_categories = \App\Category::whereIsRoot()->get();
+        $categories = \App\Category::get();
+        return \Response::json(\View::make('partials.userstable',compact('users','roles','root_categories','categories'))->render(),200);
+    }
+
     public function postNamechange(){
         \App\User::where('id', '=', \Request::input('pk'))->update(['name' => \Request::input('value')]);
     }
@@ -38,7 +46,7 @@ class AccountController extends Controller
 
         $bool = \Request::input('bool');
         $this->officesync($bool);
-
+        return \Response::json('true',200);
     }
 
     protected function officesync($bool){
@@ -47,13 +55,13 @@ class AccountController extends Controller
             $category_id = \Request::input('category_id');
             $user = \App\User::find($user_id);
             $user->categoryServices()->attach($category_id);
-            return 'true';
+            return \Response::json('true',200);
         }else{
             $user_id = \Request::input('user_id');
             $category_id = \Request::input('category_id');
             $user = \App\User::find($user_id);
             $user->categoryServices()->detach($category_id);
-            return 'false';
+            return \Response::json('false',200);
         }
     }
 
