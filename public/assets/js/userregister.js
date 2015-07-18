@@ -68,7 +68,7 @@ $(document).ready(function() {
         runtimes: 'html5',
         browse_button: 'avatar-upload',
         chunk_size: '50kb',
-        url: '/accounts/useravatar',
+        url: '/account/useravatar',
         multi_selection: false,
         flash_swf_url: '/assets/plugins/plupload-2.1.7/js/Moxie.swf',
         silverlight_xap_url: '/assets/plugins/plupload-2.1.7/js/Moxie.xap',

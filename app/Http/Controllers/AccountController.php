@@ -54,88 +54,15 @@ class AccountController extends Controller
             $user_id = \Request::input('user_id');
             $category_id = \Request::input('category_id');
             $user = \App\User::find($user_id);
-            $user->categoryServices()->attach($category_id);
+            $user->categories()->attach($category_id);
             return \Response::json('true',200);
         }else{
             $user_id = \Request::input('user_id');
             $category_id = \Request::input('category_id');
             $user = \App\User::find($user_id);
-            $user->categoryServices()->detach($category_id);
+            $user->categories()->detach($category_id);
             return \Response::json('false',200);
         }
     }
-
-    public function postRegister()
-    {
-
-        $validator = $this->validator(\Request::all());
-
-        if ($validator->fails())
-        {
-            return \Response::json(array(
-                'fail' => true,
-                'errors' => $validator->getMessageBag()->toArray()
-            ));
-        }
-
-        $this->create(\Request::all());
-
-        return \Request::all();
-    }
-
-    public function validator(array $data)
-    {
-        return \Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-            'date' => 'required',
-            'salary' => 'required|integer'
-        ], [
-            'name.required' => 'Името е задължително.',
-            'name.max' => 'Максимална дължина на името 255 символа.',
-            'email.required' => 'Имейлът е задължителен.',
-            'email.email' => 'Невалиден имейл.',
-            'email.max' => 'Максимална дължина на имейла 255 символа.',
-            'email.unique' => 'Този имейл адрес се повтаря.',
-            'password.required' => 'Паролата е задължителна.',
-            'password.confirmed' => 'Потвърдената парола е грешна.',
-            'password.min' => 'Минимална дължина на паролата 6 символа.',
-            'date.required' => 'Датата е задължителна.',
-            'salary.required' => 'Заплатата е задължителна.',
-            'salary.integer' => 'Трябва да бъде число.'
-        ]);
-    }
-
-    public function create(array $data)
-    {
-        $user = new \App\User;
-        $user->name = $data['name'];
-        $user->email = $data['email'];
-        $user->salary = $data['salary'];
-        $user->bDate = $data['date'];
-        $user->password = bcrypt($data['password']);
-        $user->save();
-        if (array_key_exists('categories',$data)) {
-            $user->categoryServices()->attach($data['categories']);
-        }
-        $user->roles()->attach($data['role']);
-
-        return $user;
-    }
-
-    public function postUseravatar(){
-
-
-        return \Plupload::receive('file', function ($file){
-            // Store the uploaded file
-            $email = \Request::input('email');
-            $path = storage_path().'/profiles/'.$email.'/avatar/';
-            \File::makeDirectory($path,  $mode = 0777, $recursive = true);
-            $path = storage_path().'/profiles/'.$email.'/avatar/avatar.jpg';
-            \Image::make($file->getRealPath())->save($path,30);
-        });
-    }
-
 
 }

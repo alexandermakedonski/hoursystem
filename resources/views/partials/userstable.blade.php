@@ -39,7 +39,7 @@
                                             <optgroup label="{{ $root->name }}">
                                                 @foreach($categories as $category)
                                                     @if($root->id == $category->parent_id)
-                                                        @if( $user->categoryServices->contains($category->id ) )
+                                                        @if( $user->categories->contains($category->id ) )
                                                             <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                                                         @else
                                                             <option value="{{ $category->id }}">{{ $category->name }}</option>

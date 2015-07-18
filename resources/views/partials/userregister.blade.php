@@ -10,7 +10,7 @@
                 </ul>
             </div>
             <div class="panel-body account" style="display: none;">
-                {!! Form::open(['data-remote-account','method'=>'post','url'=>'accounts/register']) !!}
+                {!! Form::open(['data-remote-account','method'=>'post','url'=>'/account/register/']) !!}
                 <div class="group">
                     <div id="avatar-upload"></div>
                 </div>

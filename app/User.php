@@ -40,13 +40,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function roles()
     {
-        $roles = $this->belongsToMany('App\Role', 'user_roles', 'user_id', 'role_id');
+        $roles = $this->belongsToMany('App\Role', 'user_role', 'user_id', 'role_id');
         return $roles;
     }
 
-    public function categoryServices()
+    public function categories()
     {
-        $categories = $this->belongsToMany('App\Category','user_categories','user_id','category_id');
+        $categories = $this->belongsToMany('App\Category','user_category','user_id','category_id');
         return $categories;
     }
 
