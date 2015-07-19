@@ -19,3 +19,5 @@
 <script src={{URL::to("assets/plugins/waves/waves.min.js")}}></script>
 <script src={{URL::to("assets/js/modern.min.js")}}></script>
 <script src={{URL::to("/js/all.js")}}></script>
+<script src="{{ asset('/vendor/acl/js/script.js') }}"></script>
+<script src="{{ asset('/vendor/acl/js/restful.js') }}"></script>

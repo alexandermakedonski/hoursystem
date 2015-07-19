@@ -51,6 +51,12 @@ $(document).ready(function() {
         });
     };
 
+    var dd = new Array();
+    roles.forEach(function(role){
+        var temp = {value:role.id,text:role.role_title};
+        dd.push(temp);
+    });
+
     var rolesselect = function(){
         $('.roleselect').editable({
             mode: 'inline',
@@ -58,11 +64,7 @@ $(document).ready(function() {
             title:"Select status",
             url: '/accounts/rolechange',
             value: 2,
-            source: [
-                {value: 1, text: 'Administrator'},
-                {value: 2, text: 'Moderator'},
-                {value: 3, text: 'Base'}
-            ],
+            source: dd,
             params:{_token: Globals._token}
         });
     };

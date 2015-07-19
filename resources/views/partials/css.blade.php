@@ -16,3 +16,4 @@
 <link href={{URL::to("/assets/css/modern.min.css")}} rel="stylesheet" type="text/css"/>
 
 <link href={{URL::to("/css/all.css")}} rel="stylesheet" type="text/css"/>
+<link href="{{ asset('/vendor/acl/css/style.css') }}" rel="stylesheet">

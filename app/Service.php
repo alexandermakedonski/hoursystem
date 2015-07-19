@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
+    public $timestamps = false;
+
     protected $table = 'services';
 
     protected $fillable = ['category_id','name','price','time'];

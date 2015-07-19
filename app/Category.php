@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends \Kalnoy\Nestedset\Node
+class Category  extends \Kalnoy\Nestedset\Node
 {
     public $timestamps = false;
 
-    protected $fillable = ['name'];
-
+    protected $fillable = ['id','name','parent_id','_lft','_rgt'];
 
 
     public function users()

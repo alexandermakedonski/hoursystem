@@ -8,6 +8,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
     use Authenticatable, CanResetPassword;
@@ -33,15 +34,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function users(){
-
-        return \App\User::all();
-    }
-
-    public function roles()
+    public function role()
     {
-        $roles = $this->belongsToMany('App\Role', 'user_role', 'user_id', 'role_id');
-        return $roles;
+        return $this->belongsTo('\Aginev\Acl\Http\Models\Role');
     }
 
     public function categories()

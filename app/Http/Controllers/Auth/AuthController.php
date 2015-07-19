@@ -146,11 +146,12 @@ class AuthController extends Controller
         $user->salary = $data['salary'];
         $user->bDate = $data['date'];
         $user->password = bcrypt($data['password']);
+        $user->role_id = $data['role'];
         $user->save();
         if (array_key_exists('categories',$data)) {
             $user->categories()->attach($data['categories']);
         }
-        $user->roles()->attach($data['role']);
+
 
         return $user;
     }

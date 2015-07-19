@@ -62,14 +62,14 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <div class="group">
                             <select name="role"  class="form-control" >
                                 @foreach($roles as $role)
-                                    @if($role->name == 'Base')
-                                        <option value="{{ $role->id }}" selected>{{ $role->name }}</option>
+                                    @if($role->role_title == 'Base')
+                                        <option value="{{ $role->id }}" selected>{{ $role->role_title }}</option>
                                     @else
-                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        <option value="{{ $role->id }}">{{ $role->role_title }}</option>
                                     @endif
                                 @endforeach
                             </select>

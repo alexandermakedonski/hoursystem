@@ -51,7 +51,7 @@
                                     </select>
                                     {!! Form::close() !!}
                                 </td>
-                                <td class="roleselect" data-value="{{ $user->roles[0]->id }}" data-pk="{{ $user->id }}">{{ $user->roles[0]->name}}</td>
+                                <td class="roleselect" data-value="{{ $user->role->id }}" data-pk="{{ $user->id }}">{{ $user->role->role_title}}</td>
                                 <td class="user-bdate" data-value="{{ $user->bDate }}"  data-pk="{{ $user->id }}" >{{ $user->bDate }}</td>
                                 <td><p class="user-salary-icon">$</p><div class="user-salaray"  data-pk="{{ $user->id }}">{{ $user->salary }}</div></td>
                             </tr>

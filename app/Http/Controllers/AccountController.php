@@ -11,7 +11,7 @@ class AccountController extends Controller
 {
     public function getIndex(){
 
-        $roles = \App\Role::orderBy('id', 'DESC')->get();
+        $roles = \DB::table('roles')->select('id', 'role_title')->get();
         $root_categories = \App\Category::whereIsRoot()->get();
         $categories = \App\Category::get();
         return view('accounts.index',compact('roles','root_categories','categories'));
@@ -19,7 +19,7 @@ class AccountController extends Controller
 
     public function getUserstable(){
         $users = \App\User::all();
-        $roles = \App\Role::orderBy('id', 'DESC')->get();
+        $roles = \DB::table('roles')->select('id', 'role_title')->get();
         $root_categories = \App\Category::whereIsRoot()->get();
         $categories = \App\Category::get();
         return \Response::json(\View::make('partials.userstable',compact('users','roles','root_categories','categories'))->render(),200);
@@ -31,7 +31,7 @@ class AccountController extends Controller
 
     public function postRolechange(){
 
-        DB::table('user_roles')->where('user_id','=',\Request::input('pk'))->update(['role_id' => \Request::input('value')]);
+        \App\User::where('id','=',\Request::input('pk'))->update(['role_id' => \Request::input('value')]);
 
     }
 

@@ -148,6 +148,7 @@ return [
         Torann\Hashids\HashidsServiceProvider::class,
         JildertMiedema\LaravelPlupload\LaravelPluploadServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Aginev\Acl\AclServiceProvider::class,
 
     ],
 

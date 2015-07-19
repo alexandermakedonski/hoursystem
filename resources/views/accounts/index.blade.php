@@ -29,11 +29,15 @@
 
 
     </div><!-- Main Wrapper -->
+
 @endsection
 
 @section('scripts')
 
+    <script>
+        var roles = JSON.parse('{!!json_encode($roles) !!}');
 
+    </script>
     <script src={{ URL::to("assets/plugins/jquery-mockjax-master/jquery.mockjax.js") }}></script>
     <script src={{ URL::to("assets/plugins/moment/moment.js") }}></script>
     <script src={{ URL::to("assets/plugins/datatables/js/jquery.datatables.min.js") }}></script>

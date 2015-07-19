@@ -149,7 +149,7 @@
                         <p>Начало</p>
                     </a>
                 </li>
-                @if(Auth::user()->roles[0]->name == 'Administrator')
+                @if(Auth::user()->role->role_title == 'Admin')
                     <li class="accounts">
                         <a href={{ URL::to('/accounts') }}><span class="menu-icon icon-user"></span>
                             <p>Акаунти</p>
@@ -192,7 +192,9 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        Globals = {  _token : '{{csrf_token()}}' }
+        Globals = {
+            _token : '{{csrf_token()}}'
+        };
     });
 </script>
 
